@@ -1,0 +1,324 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --radius: 0.5rem;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+}
+
+@layer utilities {
+  .animate-fadeIn {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-slideIn {
+    animation: slideIn 0.8s ease-out;
+  }
+
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateX(-50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+
+  @keyframes glow {
+    from {
+      box-shadow: 0 0 20px rgba(26, 98, 98, 0.3);
+    }
+    to {
+      box-shadow: 0 0 30px rgba(26, 98, 98, 0.6);
+    }
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  @keyframes expandLine {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+  }
+
+  @keyframes checkmarkAppear {
+    from {
+      opacity: 0;
+      transform: scale(0.5);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes typeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes floatUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(40px) scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  @keyframes drawCheck {
+    from {
+      stroke-dashoffset: 20;
+    }
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  @keyframes bubbleBounce {
+    0%,
+    100% {
+      transform: translateY(0) scale(1);
+    }
+    50% {
+      transform: translateY(-8px) scale(1.02);
+    }
+  }
+
+  @keyframes bubbleGlow {
+    0%,
+    100% {
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    }
+    50% {
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    }
+  }
+
+  .chat-bubble {
+    position: relative;
+    border-radius: 24px;
+    transition: all 0.3s ease;
+    animation: bubbleGlow 3s ease-in-out infinite;
+  }
+
+  .chat-bubble:hover {
+    transform: translateY(-8px) scale(1.02);
+    animation: none;
+  }
+
+  /* Chat bubble tails for different positions */
+  .chat-bubble-left::after {
+    content: "";
+    position: absolute;
+    bottom: -8px;
+    left: 32px;
+    width: 16px;
+    height: 16px;
+    background: inherit;
+    border-radius: 0 0 16px 0;
+    clip-path: polygon(0 0, 100% 0, 0 100%);
+    z-index: -1;
+  }
+
+  .chat-bubble-right::after {
+    content: "";
+    position: absolute;
+    bottom: -8px;
+    right: 32px;
+    width: 16px;
+    height: 16px;
+    background: inherit;
+    border-radius: 0 0 0 16px;
+    clip-path: polygon(0 0, 100% 0, 100% 100%);
+    z-index: -1;
+  }
+
+  /* Glow effects for different industry colors */
+  .chat-bubble-edtech:hover {
+    box-shadow: 0 8px 32px rgba(26, 98, 98, 0.25), 0 0 0 1px rgba(26, 98, 98, 0.2);
+  }
+
+  .chat-bubble-finance:hover {
+    box-shadow: 0 8px 32px rgba(225, 169, 64, 0.25), 0 0 0 1px rgba(225, 169, 64, 0.2);
+  }
+
+  .chat-bubble-realestate:hover {
+    box-shadow: 0 8px 32px rgba(145, 196, 153, 0.25), 0 0 0 1px rgba(145, 196, 153, 0.2);
+  }
+
+  .chat-bubble-healthcare:hover {
+    box-shadow: 0 8px 32px rgba(255, 103, 0, 0.25), 0 0 0 1px rgba(255, 103, 0, 0.2);
+  }
+
+  .chat-bubble-d2c:hover {
+    box-shadow: 0 8px 32px rgba(26, 98, 98, 0.25), 0 0 0 1px rgba(26, 98, 98, 0.2);
+  }
+
+  .chat-bubble-enterprise:hover {
+    box-shadow: 0 8px 32px rgba(145, 196, 153, 0.25), 0 0 0 1px rgba(145, 196, 153, 0.2);
+  }
+
+  /* Flip Card Styles */
+  .flip-card {
+    width: 100%;
+    height: 200px;
+    perspective: 1000px;
+  }
+
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s ease;
+    transform-style: preserve-3d;
+  }
+
+  .flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+
+  .flip-card-front,
+  .flip-card-back {
+    position: absolute;
+    backface-visibility: hidden;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(55, 65, 81, 0.5);
+  }
+
+  .flip-card-front {
+    background: linear-gradient(135deg, rgba(31, 41, 55, 0.8) 0%, rgba(17, 24, 39, 0.9) 100%);
+  }
+
+  .flip-card-back {
+    background: linear-gradient(135deg, rgba(26, 98, 98, 0.9) 0%, rgba(145, 196, 153, 0.8) 100%);
+    transform: rotateY(180deg);
+  }
+
+  .flip-card.highlighted .flip-card-front {
+    background: linear-gradient(135deg, rgba(26, 98, 98, 0.9) 0%, rgba(145, 196, 153, 0.8) 100%);
+  }
+
+  .flip-card.highlighted .flip-card-back {
+    background: linear-gradient(135deg, rgba(225, 169, 64, 0.9) 0%, rgba(255, 103, 0, 0.8) 100%);
+  }
+
+  /* Mobile responsiveness for flip cards */
+  @media (max-width: 768px) {
+    .flip-card {
+      height: 180px;
+    }
+
+    .flip-card-front,
+    .flip-card-back {
+      padding: 16px;
+    }
+  }
+}
+
+* {
+  border-color: hsl(var(--border));
+}
+
+body {
+  color: hsl(var(--foreground));
+  background: hsl(var(--background));
+}
+
+html {
+  scroll-behavior: smooth;
+}
